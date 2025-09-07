@@ -1,20 +1,17 @@
-package src.main.java.bench;
+package bench;
 
-import org.openjdk.jmh.annotations.Benchmark;
-import org.openjdk.jmh.annotations.Scope;
-import org.openjdk.jmh.annotations.State;
-
-@State(Scope.Thread)
 public class LoopBench {
 
-    private static final int N = 1_000_000_000; // 1 bilhão
+    private static final int N = 1_000_000_000;
 
-    @Benchmark
-    public void testLoop() {
+    public static void main(String[] args) {
+        long start = System.currentTimeMillis();
         long sum = 0;
         for (int i = 0; i < N; i++) {
             sum += i;
         }
-        if (sum == -1) throw new RuntimeException("impossível");
+        long end = System.currentTimeMillis();
+        System.out.println("result: " + sum);
+        System.out.println("elapsed time: " + (end - start) + " ms");
     }
 }

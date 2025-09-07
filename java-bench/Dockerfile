@@ -10,10 +10,10 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
-COPY pom.xml .
 COPY src ./src
+COPY pom.xml .
 
-# Compila e empacota benchmarks
-RUN mvn clean package -DskipTests
+# Compila
+RUN mvn -q clean package -DskipTests
 
-CMD ["java", "-jar", "target/java-bench-1.0-SNAPSHOT.jar"]
+CMD ["java", "-cp", "target/classes", "bench.LoopBench"]

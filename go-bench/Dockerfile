@@ -1,6 +1,5 @@
 FROM ubuntu:22.04
 
-# Evita prompts interativos
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Instala Go
@@ -13,10 +12,8 @@ RUN apt-get update && \
 ENV PATH="/usr/local/go/bin:${PATH}"
 
 WORKDIR /app
-COPY loop_bench_test.go .
+COPY main.go .
 
-# Compila módulos Go (mesmo que não use dependências externas)
-RUN go mod init bench && go mod tidy
+RUN go build -o loopbench main.go
 
-# Comando padrão: roda benchmarks
-CMD ["go", "test", "-bench=.", "-benchmem", "-run=^$", "."]
+CMD ["./loopbench"]
