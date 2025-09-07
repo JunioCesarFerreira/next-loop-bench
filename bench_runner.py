@@ -29,7 +29,7 @@ for run in range(RUNS):
 
     # Executa docker compose up e captura saída
     proc = subprocess.run(
-        ["docker", "compose", "up", "--build", "--abort-on-container-exit"],
+        ["docker", "compose", "up"],
         capture_output=True,
         text=True
     )
@@ -38,13 +38,11 @@ for run in range(RUNS):
 
     # Extrai tempos de cada linguagem
     for line in output:
-        print(line)
         match = pattern.search(line)
         if match:
             time_ms = int(match.group(1))
             for lang in languages:
                 if lang in line:  # detecta pelo nome do serviço
-                    print(f'results[{lang}].append({time_ms})')
                     results[lang].append(time_ms)
 
     # Remove containers para próxima rodada
