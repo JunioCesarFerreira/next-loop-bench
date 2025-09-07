@@ -1,19 +1,10 @@
-FROM ubuntu:22.04
-
-ENV DEBIAN_FRONTEND=noninteractive
-ENV LANG C.UTF-8
-ENV LC_ALL C.UTF-8
-
-# Instala Java + Maven
-RUN apt-get update && \
-    apt-get install -y openjdk-17-jdk maven && \
-    rm -rf /var/lib/apt/lists/*
+FROM openjdk:17
 
 WORKDIR /app
 COPY src ./src
-COPY pom.xml .
 
-# Compila
-RUN mvn -q clean package -DskipTests
+# Compila com javac
+RUN mkdir -p out && javac -d out src/main/java/bench/LoopBench.java
 
-CMD ["java", "-cp", "target/classes", "bench.LoopBench"]
+# Executa o programa
+CMD ["java", "-cp", "out", "bench.LoopBench"]
