@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-const N = 1_000_000_000 // 1 bilhão
+const N = 100_000_000 // 1 bilhão
 
 func main() {
 	start := time.Now()

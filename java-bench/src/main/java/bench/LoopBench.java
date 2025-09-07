@@ -2,7 +2,7 @@ package bench;
 
 public class LoopBench {
 
-    private static final int N = 1_000_000_000;
+    private static final int N = 100_000_000;
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
