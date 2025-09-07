@@ -4,7 +4,7 @@ import statistics
 import matplotlib.pyplot as plt
 
 # Número de execuções
-RUNS = 10
+RUNS = 100
 
 # Containers/languages que esperamos
 languages = [
