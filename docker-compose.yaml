@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+  go-bench:
+    build: ./go-bench
+    container_name: go-bench
+  java-bench:
+    build: ./java-bench
+    container_name: java-bench
