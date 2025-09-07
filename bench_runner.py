@@ -2,6 +2,7 @@ import subprocess
 import re
 import statistics
 import matplotlib.pyplot as plt
+import csv
 
 # Number of executions
 RUNS = 100
@@ -55,8 +56,18 @@ print("\n=== Average execution times (ms) ===")
 for lang, avg in averages.items():
     print(f"{lang}: {avg:.2f} ms")
 
+# --------- Save results to CSV ----------
+with open("benchmark_results.csv", "w", newline="") as csvfile:
+    writer = csv.writer(csvfile)
+    writer.writerow(["language", "run", "time_ms"])
+    for lang in languages:
+        for i, t in enumerate(results[lang], start=1):
+            writer.writerow([lang, i, t])
+
+print("CSV file saved: benchmark_results.csv")
+
 # --------- Plot 1: line chart with all runs ----------
-plt.figure(figsize=(10, 6))
+plt.figure(figsize=(12, 8))
 for lang in languages:
     if results[lang]:
         plt.plot(results[lang], label=lang, marker="o", markersize=2, linewidth=1)
@@ -68,7 +79,7 @@ plt.grid(True, linestyle="--", alpha=0.7)
 plt.savefig("benchmark_all_runs.png")
 
 # --------- Plot 2: bar chart with averages ----------
-plt.figure(figsize=(8, 5))
+plt.figure(figsize=(12, 8))
 langs = list(averages.keys())
 times = [averages[lang] for lang in langs]
 plt.bar(langs, times)
