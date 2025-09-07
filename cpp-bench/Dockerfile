@@ -1,7 +1,7 @@
 FROM gcc:14
 
 WORKDIR /app
-COPY loop_bench.cpp .
+COPY main.cpp .
 
 RUN g++ -O3 main.cpp -o loopbench
 
