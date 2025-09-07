@@ -29,7 +29,7 @@ for run in range(RUNS):
 
     # Executa docker-compose up e captura saída
     proc = subprocess.run(
-        ["docker-compose", "up", "--build", "--abort-on-container-exit"],
+        ["docker", "compose", "up", "--build", "--abort-on-container-exit"],
         capture_output=True,
         text=True
     )
@@ -47,7 +47,7 @@ for run in range(RUNS):
                     results[lang].append(time_ms)
 
     # Remove containers para próxima rodada
-    subprocess.run(["docker-compose", "down"], capture_output=True)
+    subprocess.run(["docker", "compose", "down"], capture_output=True)
 
 # Calcular médias
 averages = {lang: statistics.mean(times) for lang, times in results.items() if times}
