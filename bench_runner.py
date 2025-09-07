@@ -4,7 +4,7 @@ import statistics
 import matplotlib.pyplot as plt
 
 # Número de execuções
-RUNS = 100
+RUNS = 10
 
 # Containers/languages que esperamos
 languages = [
@@ -25,7 +25,7 @@ results = {lang: [] for lang in languages}
 pattern = re.compile(r"elapsed time:\s+(\d+)\s+ms", re.IGNORECASE)
 
 for run in range(RUNS):
-    print(f"▶ Run {run+1}/{RUNS}")
+    print(f"Run {run+1}/{RUNS}")
 
     # Executa docker compose up e captura saída
     proc = subprocess.run(
@@ -38,11 +38,13 @@ for run in range(RUNS):
 
     # Extrai tempos de cada linguagem
     for line in output:
+        print(line)
         match = pattern.search(line)
         if match:
             time_ms = int(match.group(1))
             for lang in languages:
                 if lang in line:  # detecta pelo nome do serviço
+                    print(f'results[{lang}].append({time_ms})')
                     results[lang].append(time_ms)
 
     # Remove containers para próxima rodada
