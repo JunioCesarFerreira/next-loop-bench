@@ -3,6 +3,31 @@ services:
   go-bench:
     build: ./go-bench
     container_name: go-bench
+    
   java-bench:
     build: ./java-bench
     container_name: java-bench
+
+  python-bench:
+    build: ./python-bench
+    container_name: python-bench
+
+  csharp-bench:
+    build: ./csharp-bench
+    container_name: csharp-bench
+
+  node-bench:
+      build: ./node-bench
+      container_name: node-bench
+
+  rust-bench:
+    build: ./rust-bench
+    container_name: rust-bench
+
+  c-bench:
+    build: ./c-bench
+    container_name: c-bench
+
+  cpp-bench:
+    build: ./cpp-bench
+    container_name: cpp-bench
