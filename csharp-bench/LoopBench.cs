@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 class LoopBench
 {
-    const long N = 100_000_000;
+    const long N = 1_000_000_000;
 
     static void Main()
     {

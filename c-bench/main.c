@@ -3,7 +3,7 @@
 #include <stdint.h>
 
 int main() {
-    const long long N = 100000000LL;
+    const long long N = 1000000000LL;
     long long sum = 0;
 
     clock_t start = clock();

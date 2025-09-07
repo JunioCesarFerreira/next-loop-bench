@@ -1,6 +1,6 @@
 import time
 
-N = 100_000_000  # 100 milhões
+N = 1_000_000_000  # 100 milhões
 
 def main():
     start = time.time()

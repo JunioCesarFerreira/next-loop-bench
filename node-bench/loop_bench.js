@@ -1,4 +1,4 @@
-const N = 100_000_000;
+const N = 1_000_000_000;
 
 function main() {
     const start = Date.now();
