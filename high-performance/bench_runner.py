@@ -47,9 +47,9 @@ for run in range(RUNS):
 # Calculate averages
 averages = {lang: statistics.mean(times) for lang, times in results.items() if times}
 
-print("\n=== Average execution times (ms) ===")
+print("\n=== Average execution times (ns) ===")
 for lang, avg in averages.items():
-    print(f"{lang}: {avg:.2f} ms")
+    print(f"{lang}: {avg:.2f} ns")
 
 # --------- Save results to CSV ----------
 with open("benchmark_results.csv", "w", newline="") as csvfile:
@@ -67,7 +67,7 @@ for lang in languages:
     if results[lang]:
         plt.plot(results[lang], label=lang, marker="o", markersize=2, linewidth=1)
 plt.xlabel("Run")
-plt.ylabel("Time (ms)")
+plt.ylabel("Time (ns)")
 plt.title(f"Benchmark loop 1 billion - {RUNS} runs")
 plt.legend()
 plt.grid(True, linestyle="--", alpha=0.7)
@@ -78,7 +78,7 @@ plt.figure(figsize=(12, 8))
 langs = list(averages.keys())
 times = [averages[lang] for lang in langs]
 plt.bar(langs, times)
-plt.ylabel("Average time (ms)")
+plt.ylabel("Average time (ns)")
 plt.title(f"Benchmark loop 1 billion ({RUNS} runs)")
 plt.grid(axis="y", linestyle="--", alpha=0.7)
 
