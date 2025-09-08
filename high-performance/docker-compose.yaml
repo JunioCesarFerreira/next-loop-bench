@@ -1,0 +1,12 @@
+services:
+  rust-bench:
+    build: ./rust-bench
+    container_name: rust-bench
+
+  c-bench:
+    build: ./c-bench
+    container_name: c-bench
+
+  cpp-bench:
+    build: ./cpp-bench
+    container_name: cpp-bench
