@@ -67,16 +67,16 @@ The bar chart below presents the average execution time across 100 runs:
 
 ![Means](./reports/results/benchmark_means.png)
 
-| Language      | Average Time (ms) |
+| Language      | Average Time       |
 |---------------|-------------------:|
-| go-bench      |              489.92 |
-| csharp-bench  |              259.32 |
-| java-bench    |              290.63 |
-| python-bench  |           30,721.65 |
-| node-bench    |           18,604.65 |
-| c-bench       |                0.00 |
-| cpp-bench     |                0.00 |
-| rust-bench    |                0.00 |
+| go-bench      |        489.92 (ms) |
+| csharp-bench  |        259.32 (ms) |
+| java-bench    |        290.63 (ms) |
+| python-bench  |     30,721.65 (ms) |
+| node-bench    |     18,604.65 (ms) |
+| c-bench       |        477.82 (**ns**) |
+| cpp-bench     |        511.46 (**ns**) |
+| rust-bench    |        518.47 (**ns**) |
 
 ---
 
@@ -100,3 +100,16 @@ These results confirm expected performance tiers:
 ## Data
 
 - Raw results: [`benchmark_results.csv`](./reports/results/benchmark_results.csv)  
+
+---
+
+## High-Resolution Measurements
+
+For native-compiled languages (C, C++ and Rust), execution times were so small that millisecond precision was insufficient — results appeared as `0 ms`.  
+To address this, we re-ran the experiments using **nanosecond resolution**.  
+
+The plot below highlights the ultra-low execution times of these languages:
+
+![high](./reports/results/high-performance/benchmark_all_runs.png)
+
+---
